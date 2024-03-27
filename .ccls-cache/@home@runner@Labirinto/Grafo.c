@@ -37,6 +37,7 @@ Grafo* cria_grafo(int nro_vertices, int eh_ponderado){
     return gr;
 }
 
+//Verifica se existem arestas repetidas no grafo
 bool aresta_existe(struct grafo* gr, int u, int v) {
   int cont = 0;
   
@@ -53,15 +54,20 @@ bool aresta_existe(struct grafo* gr, int u, int v) {
   return false;
 }
 
+//Constrói o grafo
 void gera_grafo(Grafo *gr) {
   srand(time(NULL));
   
   for (int i = 0; i < gr->nro_vertices; i++) {
+      //número aleatório para definir a quantidade de arestas
       int num_arestas = rand() % (gr->nro_vertices) - 1;
+      //precisa ter ao menos 1 aresta por vértice
       if(num_arestas <= 0)
         num_arestas = 1;
       while (num_arestas > 0) {
+          //escolhe um vértice aleatório para fazer ligação
           int v = rand() % gr->nro_vertices;
+          //verifica se a aresta já existe
           if (i != v && !aresta_existe(gr, i, v)){
             insereAresta(gr, i, v, 1, 0);
             num_arestas--;
