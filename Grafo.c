@@ -12,7 +12,7 @@ struct grafo{
     float** pesos; // Lista de peso da aresta: pesos[i][j] = k -> existe aresta partindo de i. O índice na lista é j (mesmo da lista de arestas). k é peso. Ex: arestas[i][j] = k. peso[i][j] = k2.
     int* grau; // quantidade de arestas que o vértice possui
 };
-
+//oifabo
 Grafo* cria_grafo(int nro_vertices, int eh_ponderado){
     Grafo *gr;
     gr = (Grafo*) malloc(sizeof(struct grafo));
