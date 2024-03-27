@@ -5,7 +5,7 @@
 #include "Grafo.h"
 
 struct grafo{
-    int eh_ponderadao; // Sim 1 Não 0
+    int eh_ponderado; // Sim 1 Não 0
     int nro_vertices; // Número de vértices do grafo
     int grau_max; //Quantidade máxima de arestas que podem sair dos vértices
     int** arestas; // Lista de adjacências: arestas[i][j] = k -> existe aresta de i para k. j é o índice do item na lista
