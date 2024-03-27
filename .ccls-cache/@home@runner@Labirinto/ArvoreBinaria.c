@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "ArvoreBinaria.h"
 
+//Oi
+
 struct NO{
     Grafo *grafo;
     struct NO *esq;
