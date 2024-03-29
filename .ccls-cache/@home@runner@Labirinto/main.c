@@ -2,20 +2,21 @@
 #include <stdlib.h>
 #include <time.h>
 #include "Grafo.h"
+#include "ArvoreBinaria.h"
+#include "Area.h"
+#include "ArvoreBinaria.h"
+#include "Mapa.h"
+#include "Jogo.h"
 
 int main(void) {
-  int n = 6; // Número de vértices do grafo
-  srand(time(NULL));
 
-  struct grafo* g = cria_grafo(n, 0);
+  ArvBin* mapa = cria_ArvBin();
 
-  // Gerar o grafo enquanto não for gerado um grafo válido, ou seja, um grafo que tenha arestas ligando o início (0) ao fim (n-1)
-  do
-    gera_grafo(g);
-  while(!valida_grafo(g));
-  
-  // Imprimir o grafo gerado
-  imprime_grafo(g);
-  
+  int dif = calc_dif_lab(2) + calc_dif_mapa(2);
+  insere_area(mapa, dif);
+  gera_mapa(mapa, calc_dif_mapa(2), dif-1);
+
+  printf("Altura: %d", altura_ArvBin(mapa));
+
   return 0;
 }

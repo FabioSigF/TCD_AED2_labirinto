@@ -12,7 +12,7 @@ struct grafo{
     float** pesos; // Lista de peso da aresta: pesos[i][j] = k -> existe aresta partindo de i. O índice na lista é j (mesmo da lista de arestas). k é peso. Ex: arestas[i][j] = k. peso[i][j] = k2.
     int* grau; // quantidade de arestas que o vértice possui
 };
-//oifabo
+
 Grafo* cria_grafo(int nro_vertices, int eh_ponderado){
     Grafo *gr;
     gr = (Grafo*) malloc(sizeof(struct grafo));
@@ -40,7 +40,7 @@ Grafo* cria_grafo(int nro_vertices, int eh_ponderado){
 //Verifica se existem arestas repetidas no grafo
 bool aresta_existe(struct grafo* gr, int u, int v) {
   int cont = 0;
-  
+
   if(gr->arestas[u][v] == 1 || gr->arestas[v][u] == 1) { 
     return true;
   }
@@ -57,7 +57,7 @@ bool aresta_existe(struct grafo* gr, int u, int v) {
 //Constrói o grafo
 void gera_grafo(Grafo *gr) {
   srand(time(NULL));
-  
+
   for (int i = 0; i < gr->nro_vertices; i++) {
       //número aleatório para definir a quantidade de arestas
       int num_arestas = rand() % (gr->nro_vertices) - 1;
@@ -179,7 +179,7 @@ bool valida_grafo(Grafo *gr){
 
     for(int i = 0; i < gr->nro_vertices; i++)
       aresta_de_zero[i]  = false;
-  
+
     buscaProfundidade(gr,0,aresta_de_zero, &eh_valido, &visitados);
 
     return eh_valido;

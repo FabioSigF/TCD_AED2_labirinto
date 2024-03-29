@@ -1,3 +1,5 @@
+#ifndef GRAFO_H
+#define GRAFO_H
 #include <stdbool.h>
 
 typedef struct grafo Grafo;
@@ -17,3 +19,5 @@ int removeAresta(Grafo* gr, int orig, int dest, int eh_digrafo);
 bool valida_grafo(Grafo *gr);
 
 void imprime_grafo(Grafo *gr);
+
+#endif

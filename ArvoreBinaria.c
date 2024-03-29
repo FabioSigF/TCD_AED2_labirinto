@@ -2,14 +2,6 @@
 #include <stdlib.h>
 #include "ArvoreBinaria.h"
 
-//Oi
-
-struct NO{
-    Grafo *grafo;
-    struct NO *esq;
-    struct NO *dir;
-};
-
 ArvBin* cria_ArvBin(){
     ArvBin* raiz = (ArvBin*) malloc(sizeof(ArvBin));
     if(raiz != NULL)
@@ -170,7 +162,9 @@ void preOrdem_ArvBin(ArvBin *raiz){
         return;
     if(*raiz != NULL){
         imprime_grafo((*raiz)->grafo);
+        printf("Árvores da esqueda: ");
         preOrdem_ArvBin(&((*raiz)->esq));
+        printf("Árvores da direita: ");
         preOrdem_ArvBin(&((*raiz)->dir));
     }
 }

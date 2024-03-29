@@ -1,5 +1,13 @@
 
+#ifndef ARVBIN_H
+#define ARVBIN_H
 #include "Grafo.h"
+
+struct NO{
+    Grafo *grafo;
+    struct NO *esq;
+    struct NO *dir;
+};
 
 typedef struct NO* ArvBin;
 
@@ -14,3 +22,5 @@ int consulta_ArvBin(ArvBin *raiz, Grafo *grafo);
 void preOrdem_ArvBin(ArvBin *raiz);
 void emOrdem_ArvBin(ArvBin *raiz);
 void posOrdem_ArvBin(ArvBin *raiz);
+
+#endif
