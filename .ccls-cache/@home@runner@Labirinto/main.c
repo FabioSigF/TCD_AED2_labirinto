@@ -9,7 +9,6 @@
 #include "Jogo.h"
 #include "Jogador.h"
 int main(void) {
-
   //Inicializa mapa
   ArvBin* mapa = cria_ArvBin();
 
@@ -23,7 +22,6 @@ int main(void) {
   insere_area(mapa, difLab);
   //Gera mapa: áreas filhas da Área Central
   gera_mapa(mapa, calc_dif_mapa(2), difLab-1);
-
   preOrdem_ArvBin(mapa);
   explorar_labirinto((*mapa)->grafo);
   return 0;

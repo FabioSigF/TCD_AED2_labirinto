@@ -23,7 +23,7 @@ void explorar_labirinto(Grafo *g) {
     printf("Abrindo porta...\n");
 
     atual = g->arestas[atual][escolha-65];
-
+    
     if(lista[atual] == 1){
       printf("Você chegou em um beco sem saída! Você será enviado para a sala inicial para tentar novamente.\n\n");
       for(int i = 0; i < 15; i++)
