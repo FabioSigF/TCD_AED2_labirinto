@@ -162,9 +162,7 @@ void preOrdem_ArvBin(ArvBin *raiz){
         return;
     if(*raiz != NULL){
         imprime_grafo((*raiz)->grafo);
-        printf("Árvores da esqueda: ");
         preOrdem_ArvBin(&((*raiz)->esq));
-        printf("Árvores da direita: ");
         preOrdem_ArvBin(&((*raiz)->dir));
     }
 }

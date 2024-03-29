@@ -4,5 +4,5 @@
 int calc_dif_lab(int dificuldade);
 int calc_dif_lab_centro(int dificuldade);
 int calc_dif_mapa(int dificuldade);
-
+int imprime_portas(int qtd);
 #endif

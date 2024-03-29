@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "Jogo.h"
 
 int calc_dif_lab(int dificuldade){
@@ -10,21 +11,6 @@ int calc_dif_lab(int dificuldade){
       return 7;
     case 3:
       return 9;
-    default:
-      return 0;
-  }
-}
-
-int calc_dif_lab_centro(int dificuldade){
-  //1 - Fácil; 2 - Médio; 3 - Difícil
-  //Retorna a quantidade de vértices que cada grafo terá para o labirinto da área central.
-  switch(dificuldade){
-    case 1:
-      return 10;
-    case 2:
-      return 11;
-    case 3:
-      return 13;
     default:
       return 0;
   }
@@ -43,4 +29,35 @@ int calc_dif_mapa(int dificuldade) {
     default:
       return 0;
   }
+}
+
+int imprime_portas(int qtd) {
+  for(int i = 0; i < qtd; i++){
+    printf("   _________     ");
+  }
+  printf("\n");
+  for(int i = 0; i < qtd; i++){
+    printf("  |  _____  |    ");
+  }
+  printf("\n");
+  for(int i = 0; i < qtd; i++){
+    printf("  | |  %c  | |    ", i+65);
+  }
+  printf("\n");
+  for(int i = 0; i < qtd; i++){
+    printf("  | |_____| |    ");
+  }
+  printf("\n");
+  for(int i = 0; i < qtd; i++){
+    printf("  |       o |    ");
+  }
+  printf("\n");
+  for(int i = 0; i < qtd; i++){
+    printf("  |         |    ");
+  }
+  printf("\n");
+  for(int i = 0; i < qtd; i++){
+    printf("  |_________|    ");
+  }
+  printf("\n");
 }
