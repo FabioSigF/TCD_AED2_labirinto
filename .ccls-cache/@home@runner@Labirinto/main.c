@@ -22,7 +22,7 @@ int main(void) {
   }
 
   //Dificuldade do jogo
-  int dificuldade = 1;
+  int dificuldade = 2;
 
   //Calcula dificuldade do labirinto da área central
   int difLab = calc_dif_lab(dificuldade) + calc_dif_mapa(dificuldade);

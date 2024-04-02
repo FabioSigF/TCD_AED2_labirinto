@@ -117,9 +117,6 @@ void imprimir_percurso(int listaPercurso[10][10], int listaArea[15], int areaAtu
       cont++;
     }
   }
-
-  printf("\n\nPercurso até agora...\n\n");
-
   for(int i = 0; i < areaAtual; i++){
     printf("Área %d: ", i+1);
     for(int j = 0; listaPercurso[i][j] != -1; j++)
@@ -127,5 +124,26 @@ void imprimir_percurso(int listaPercurso[10][10], int listaArea[15], int areaAtu
       printf("Sala %d -> ", listaPercurso[i][j]);
     }
     printf("FIM DO LABIRINTO\n\n");
+  }
+}
+
+int eh_ultima_area(int dificuldade, int area_atual) {
+  if(dificuldade == 1) {
+    if(area_atual == 4) return 1;
+  } else if (dificuldade == 2) {
+    if(area_atual == 5) return 1;
+  } else if (dificuldade == 3) {
+    if(area_atual == 6) return 1;
+  }
+  return 0;
+}
+
+void imprime_mensagem_area(int areaAtual, int ehUltimaArea) {
+  if(areaAtual == 1) {
+    printf("Bem vindo à Primeira Área do Labirinto!\n\nA partir de agora, você enfrentará desafios que nunca imaginou... \nBoa sorte!\n\n");
+  } else if (ehUltimaArea == 1) {
+    printf("Parabéns, Guerreiro! \n\nVocê chegou à última área do labirinto.\nAgora, você precisa enfrentar o desafio final para ganhar sua liberdade.\n\nPorém, as regras agora são mais complexas...\nAchou que seria tão fácil? Ha Ha Ha\n\nVocê começa essa etapa com 3 pontos de vida. Cada vez que entrar em uma sala sem saída, volta ao ponto de partida e perde 1 ponto de vida.\nSe você perder todos os pontos de vida, você perde o jogo. SIMPLES!\n\nBoa sorte, Guerreiro, te vejo do outro lado!\n\n");
+  }else {
+    printf("Bem vindo à Área %d do Labirinto!\nVocê irá encontrar cada vez mais perigos conforme avança...\nBoa sorte!\n\n", areaAtual);
   }
 }
