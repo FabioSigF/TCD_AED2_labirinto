@@ -147,3 +147,17 @@ void imprime_mensagem_area(int areaAtual, int ehUltimaArea) {
     printf("Bem vindo à Área %d do Labirinto!\nVocê irá encontrar cada vez mais perigos conforme avança...\nBoa sorte!\n\n", areaAtual);
   }
 }
+
+int calcula_pontuacao(int tempoDeJogoSeg, int pontosDeVida) {
+  //Pontuação = (5 minutos - Tempo de Jogo) + (Pontos de Vida * 50)
+  int pontuacaoTotal = 0;
+  int pontuacaoTempo = 0;
+  
+  if(tempoDeJogoSeg < 300) {
+    pontuacaoTempo = 300 - tempoDeJogoSeg;
+  }
+
+  pontuacaoTotal = pontuacaoTempo + (pontosDeVida * 50);
+
+  return pontuacaoTotal;
+}
