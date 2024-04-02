@@ -2,6 +2,6 @@
 #define MAPA_H
 
 #include "ArvoreBinaria.h"
-void gera_mapa(ArvBin *raiz, int altura, int dificuldade);
+void gera_mapa(ArvBin *raiz, int qtdSalas, int qtdAreas, int dificuldade);
 
 #endif
