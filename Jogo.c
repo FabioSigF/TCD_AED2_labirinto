@@ -139,6 +139,7 @@ int eh_ultima_area(int dificuldade, int area_atual) {
 }
 
 void imprime_mensagem_area(int areaAtual, int ehUltimaArea) {
+  printf("\n\n======================================\n                ÁREA %d\n======================================\n\n", areaAtual);
   if(areaAtual == 1) {
     printf("Bem vindo à Primeira Área do Labirinto!\n\nA partir de agora, você enfrentará desafios que nunca imaginou... \nBoa sorte!\n\n");
   } else if (ehUltimaArea == 1) {
