@@ -148,6 +148,15 @@ void imprime_mensagem_area(int areaAtual, int ehUltimaArea) {
   }
 }
 
+void imprime_mensagem_derrota(){
+  printf("Você perdeu todos os seus pontos de vida. Esse foi o seu último erro... VOCÊ PERDEU!");
+  printf("===========================\n         GAME OVER         \n===========================\n\n");
+}
+
+void imprime_mensagem_vitoria(){
+  printf("Parabéns, Guerreiro!\nVocê conseguiu superar um desafio que até mesmo os Deuses temem!\nGuerreiro, você está livre do Labirinto!!\n\n===========================\n    VOCÊ VENCEU O JOGO!\n===========================\n");
+}
+
 int calcula_pontuacao(int tempoDeJogoSeg, int pontosDeVida) {
   //Pontuação = (5 minutos - Tempo de Jogo) + (Pontos de Vida * 50)
   int pontuacaoTotal = 0;
@@ -160,4 +169,18 @@ int calcula_pontuacao(int tempoDeJogoSeg, int pontosDeVida) {
   pontuacaoTotal = pontuacaoTempo + (pontosDeVida * 50);
 
   return pontuacaoTotal;
+}
+
+int calcula_tempo_de_jogo(int tempoDeJogoSeg[6]){
+  int tempoTotal = 0;
+
+  for(int i = 0; i < 6; i++){
+    tempoTotal += tempoDeJogoSeg[i];
+  }
+
+  return tempoTotal;
+}
+
+void imprime_mensagem_pontuacao(int pontuacao) {
+  printf("PONTUACAO FINAL: %d\n", pontuacao);
 }

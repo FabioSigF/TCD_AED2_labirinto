@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 #include "Jogador.h"
 #include "Jogo.h"
 
@@ -22,14 +21,14 @@ void explorar_labirinto(Grafo *g, int listaPercurso[10][10], int dificuldade, in
     lista[i] = -1;
   }
   //Tempo de início da área
-  time_t inicio, fim;
-  time(&inicio);
-  float tempoTotal;
-
-  int pontuacao = 0;
-  
+  int tempoInicio = tempo_decorrido_em_segundos();
+  int tempoFim = 0;
+  int tempoTotal = 0;
   imprime_mensagem_area(areaAtual, ehUltimaArea);
 
+  if(ehUltimaArea == 1) {
+    imprime_grafo(g);
+  }
   do{
     lista[salaAtual] = 1;
     printf("Você está na Sala %d do Labirinto.\nPara qual porta deseja prosseguir?\n", salaAtual);
@@ -62,32 +61,26 @@ void explorar_labirinto(Grafo *g, int listaPercurso[10][10], int dificuldade, in
   if(ehUltimaArea == 1) {
     
     if(contador > 0) { 
-      imprime_mensagem_vitoria();
-    } else {
-      imprime_mensagem_derrota();
-    }
-    
+      printf("Parabéns, Guerreiro!\nVocê conseguiu superar um desafio que até mesmo os Deuses temem!\nGuerreiro, você está livre do Labirinto!!\n\n===========================\n    VOCÊ VENCEU O JOGO!\n===========================\n");
+    } 
     tempoTotal = calcula_tempo_de_jogo(tempoDeJogoSeg);
-    pontuacao = calcula_pontuacao(tempoTotal, contador);
-
-    imprime_mensagem_pontuacao(pontuacao);
-    //inserir pontuação no arquivo
+    calcula_pontuacao(tempoTotal, contador);
+    
   } else if (ehUltimaArea != 1) {
     printf("Parabéns! Você conseguiu avançar de fase.\n");
   }
 
   //Faz o tracking de qual foi o caminho do usuário
-  if(ehUltimaArea != 1) { 
+  if(contador > 0) { 
   printf("\n\nPercurso até agora...\n\n");
   } else {
     printf("\n\nPercurso final...\n\n");
   }
   imprimir_percurso(listaPercurso, lista, areaAtual);
 
-  time(&fim);
+  tempoFim = tempo_decorrido_em_segundos();
   //Calcula tempo de jogo da área
-  tempoTotal = difftime(fim, inicio);
-  tempoDeJogoSeg[areaAtual-1] = (int)tempoTotal;
+  tempoDeJogoSeg[areaAtual-1] = tempoFim - tempoInicio;
   
   printf("\n\n");
 }
