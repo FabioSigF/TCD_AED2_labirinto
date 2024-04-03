@@ -63,20 +63,21 @@ void explorar_labirinto(Grafo *g, int listaPercurso[10][10], int dificuldade, in
 
   if(ehUltimaArea == 1) {
     
+    time(&fim);
     if(contador > 0) { 
       imprime_mensagem_vitoria();
+      tempoTotal = difftime(fim, inicio);
+      tempoDeJogoSeg[areaAtual-1] = (int)tempoTotal;
+
+      int tempoDeJogo = calcula_tempo_de_jogo(tempoDeJogoSeg);
+      pontuacao = calcula_pontuacao(tempoDeJogo, contador, dificuldade);
+
+      imprime_mensagem_pontuacao(pontuacao);
+      //inserir pontuação no arquivo
     } else {
       imprime_mensagem_derrota();
+      //Como ele perdeu, não pontua.
     }
-    time(&fim);
-    tempoTotal = difftime(fim, inicio);
-    tempoDeJogoSeg[areaAtual-1] = (int)tempoTotal;
-
-    int tempoDeJogo = calcula_tempo_de_jogo(tempoDeJogoSeg);
-    pontuacao = calcula_pontuacao(tempoDeJogo, contador, dificuldade);
-
-    imprime_mensagem_pontuacao(pontuacao);
-    //inserir pontuação no arquivo
   } else if (ehUltimaArea != 1) {
     printf("Parabéns! Você conseguiu avançar de fase.\n");
   }
