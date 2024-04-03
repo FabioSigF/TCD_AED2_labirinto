@@ -7,3 +7,4 @@ void print_timer(char *str, int width);
 void print_title(char *str, int width);
 int verifica_retorno();
 void encerrar_programa();
+void print_transicao();

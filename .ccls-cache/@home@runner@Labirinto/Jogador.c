@@ -3,6 +3,7 @@
 #include <time.h>
 #include "Jogador.h"
 #include "Jogo.h"
+#include "Auxiliar.h"
 
 //Função para percorrer o labirinto.
 void explorar_labirinto(Grafo *g, int listaPercurso[10][10], int dificuldade, int tempoDeJogoSeg[6]) {
@@ -29,24 +30,20 @@ void explorar_labirinto(Grafo *g, int listaPercurso[10][10], int dificuldade, in
   int pontuacao = 0;
   
   imprime_mensagem_area(areaAtual, ehUltimaArea);
-
-  if(ehUltimaArea == 1)
-      imprime_grafo(g);
+  
   do{
-    lista[salaAtual] = 1;
+    lista[salaAtual] = 1;  
     printf("Você está na Sala %d do Labirinto.\nPara qual porta deseja prosseguir?\n", salaAtual);
     imprime_portas(g->grau[salaAtual]); 
     printf("\nResposta = ");
-    setbuf(stdin, NULL);
     scanf("%c", &escolha);
     getchar();
-    setbuf(stdin, NULL);
-    printf("\nAbrindo porta...\n");
+    printf("\nAbrindo porta...\n\n");
 
     salaAtual = g->arestas[salaAtual][escolha-65];
 
     if(lista[salaAtual] == 1){
-      printf("Você chegou em um beco sem saída! Você será enviado para a sala inicial para tentar novamente.\n\n");
+      printf("\nVocê chegou em um beco sem saída! Você será enviado para a sala inicial para tentar novamente.\n\n");
       for(int i = 0; i < 15; i++)
         lista[i] = -1;
 
@@ -78,22 +75,21 @@ void explorar_labirinto(Grafo *g, int listaPercurso[10][10], int dificuldade, in
       imprime_mensagem_derrota();
       //Como ele perdeu, não pontua.
     }
-  } else if (ehUltimaArea != 1) {
-    printf("Parabéns! Você conseguiu avançar de fase.\n");
-  }
 
-  //Faz o tracking de qual foi o caminho do usuário
-  if(ehUltimaArea != 1) { 
+    printf("\n\nPercurso final...\n\n");
+    
+  } else if (ehUltimaArea != 1) {
+    printf("Parabéns! Você conseguiu avançar de fase.");
     printf("\n\nPercurso até agora...\n\n");
     time(&fim);
     //Calcula tempo de jogo da área
     tempoTotal = difftime(fim, inicio);
     tempoDeJogoSeg[areaAtual-1] = (int)tempoTotal;
-  } else {
-    printf("\n\nPercurso final...\n\n");
-  }
+  } 
   imprimir_percurso(listaPercurso, lista, areaAtual);
-  
+
+  print_transicao();
+  system("clear");
   printf("\n\n");
 }
 //Pos ordem

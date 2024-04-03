@@ -9,10 +9,10 @@
 #include "Jogo.h"
 #include "Jogador.h"
 #include "Menu.h"
+#include "Auxiliar.h"
 int main(void) {
 
   print_introducao();
-  char c = getchar();
   system("clear");
 //Menu
   char nomeJogador[15];
@@ -51,5 +51,14 @@ int main(void) {
   //Jogador explora Mapa
   system("clear");
   explorar_mapa(mapa, listaPercurso, dificuldade, tempoDeJogoSeg);
+  int optFim = verifica_retorno();
+  
+  if(optFim == 1) {
+    //Reseta Nome Jogador
+    strcpy(nomeJogador, "");
+    menu(nomeJogador, &dificuldade);
+  } else {
+    encerrar_programa();
+  }
   return 0;
 }

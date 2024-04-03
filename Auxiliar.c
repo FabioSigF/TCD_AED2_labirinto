@@ -66,7 +66,7 @@ int verifica_retorno(){
   int opt;
 
   do{
-    printf("Retornar para página anterior?\n\n[ 1 ] SIM\n[ 2 ] NÃO\n\nResposta = ");
+    printf("Retornar ao Menu?\n\n[ 1 ] SIM\n[ 2 ] NÃO\n\nResposta = ");
     scanf("%d", &opt);
     getchar();
     if(opt < 1 || opt > 2) {
@@ -80,4 +80,9 @@ int verifica_retorno(){
 void encerrar_programa() {
     printf("\nEncerrando o programa...\n");
     exit(0);
+}
+
+void print_transicao(){
+  printf("\n(Pressione Enter para continuar...)\n");
+  getchar();
 }

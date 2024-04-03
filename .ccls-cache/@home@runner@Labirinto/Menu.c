@@ -45,6 +45,7 @@ void escolha(int opt, char *nomeJogador, int *dificuldade){
 
       //Escolhe dificuldade de jogo
       *dificuldade = escolhe_dificuldade();
+      getchar();
 
       printf("\nTudo pronto para começar, %s!\n", nome);
       strcpy(texto, "\nEssa é uma jornada só de ida. Boa Sorte!\n");
@@ -53,7 +54,7 @@ void escolha(int opt, char *nomeJogador, int *dificuldade){
       strcpy(texto, "\nEntrando no Labirinto...\n");
       print_timer(texto, strlen(texto));
       
-      char c = getchar();
+      print_transicao();
     }
       break;
     case 2:{ 
@@ -108,6 +109,7 @@ void print_introducao(){
   char texto[400];
   strcpy(texto, "Você faz parte de um povo originado de uma área inóspita, conhecida como 'O Labirinto'.\n\nSeu objetivo é, assim como o de todos do  seu povo, alcançar a maioridade para explorar o mundo e presenciar suas várias belezas.\n\nPorém, somente os 10 melhores e mais rápidos terão seus nomes gravados na história como grandes guerreiros.\n\nDê o seu melhor!");
   print_timer(texto, strlen(texto));
+  print_transicao();
 }
 
 int escolhe_dificuldade(){
