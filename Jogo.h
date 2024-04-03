@@ -12,7 +12,7 @@ int eh_ultima_area(int dificuldade, int area_atual);
 void imprime_mensagem_area(int areaAtual, int ehUltimaArea);
 void imprime_mensagem_derrota();
 void imprime_mensagem_vitoria();
-int calcula_pontuacao(int tempoDeJogoSeg, int pontosDeVida);
+int calcula_pontuacao(int tempoDeJogoSeg, int pontosDeVida, int dificuldade);
 int calcula_tempo_de_jogo(int tempoDeJogoSeg[6]);
 void imprime_mensagem_pontuacao(int pontuacao);
 #endif

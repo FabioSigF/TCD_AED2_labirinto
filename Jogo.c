@@ -123,7 +123,7 @@ void imprimir_percurso(int listaPercurso[10][10], int listaArea[15], int areaAtu
     {
       printf("Sala %d -> ", listaPercurso[i][j]);
     }
-    printf("FIM DO LABIRINTO\n\n");
+    printf("FIM DA ÁREA\n\n");
   }
 }
 
@@ -157,7 +157,7 @@ void imprime_mensagem_vitoria(){
   printf("Parabéns, Guerreiro!\nVocê conseguiu superar um desafio que até mesmo os Deuses temem!\nGuerreiro, você está livre do Labirinto!!\n\n===========================\n    VOCÊ VENCEU O JOGO!\n===========================\n");
 }
 
-int calcula_pontuacao(int tempoDeJogoSeg, int pontosDeVida) {
+int calcula_pontuacao(int tempoDeJogoSeg, int pontosDeVida, int dificuldade) {
   //Pontuação = (5 minutos - Tempo de Jogo) + (Pontos de Vida * 50)
   int pontuacaoTotal = 0;
   int pontuacaoTempo = 0;
@@ -168,6 +168,11 @@ int calcula_pontuacao(int tempoDeJogoSeg, int pontosDeVida) {
 
   pontuacaoTotal = pontuacaoTempo + (pontosDeVida * 50);
 
+  if (dificuldade == 2) {
+    pontuacaoTotal += 150;
+  } else if (dificuldade == 3) {
+    pontuacaoTotal *= 3;
+  }
   return pontuacaoTotal;
 }
 

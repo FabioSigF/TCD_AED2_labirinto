@@ -30,6 +30,8 @@ void explorar_labirinto(Grafo *g, int listaPercurso[10][10], int dificuldade, in
   
   imprime_mensagem_area(areaAtual, ehUltimaArea);
 
+  if(ehUltimaArea == 1)
+      imprime_grafo(g);
   do{
     lista[salaAtual] = 1;
     printf("Você está na Sala %d do Labirinto.\nPara qual porta deseja prosseguir?\n", salaAtual);
@@ -66,9 +68,12 @@ void explorar_labirinto(Grafo *g, int listaPercurso[10][10], int dificuldade, in
     } else {
       imprime_mensagem_derrota();
     }
-    
-    tempoTotal = calcula_tempo_de_jogo(tempoDeJogoSeg);
-    pontuacao = calcula_pontuacao(tempoTotal, contador);
+    time(&fim);
+    tempoTotal = difftime(fim, inicio);
+    tempoDeJogoSeg[areaAtual-1] = (int)tempoTotal;
+
+    int tempoDeJogo = calcula_tempo_de_jogo(tempoDeJogoSeg);
+    pontuacao = calcula_pontuacao(tempoDeJogo, contador, dificuldade);
 
     imprime_mensagem_pontuacao(pontuacao);
     //inserir pontuação no arquivo
@@ -78,16 +83,15 @@ void explorar_labirinto(Grafo *g, int listaPercurso[10][10], int dificuldade, in
 
   //Faz o tracking de qual foi o caminho do usuário
   if(ehUltimaArea != 1) { 
-  printf("\n\nPercurso até agora...\n\n");
+    printf("\n\nPercurso até agora...\n\n");
+    time(&fim);
+    //Calcula tempo de jogo da área
+    tempoTotal = difftime(fim, inicio);
+    tempoDeJogoSeg[areaAtual-1] = (int)tempoTotal;
   } else {
     printf("\n\nPercurso final...\n\n");
   }
   imprimir_percurso(listaPercurso, lista, areaAtual);
-
-  time(&fim);
-  //Calcula tempo de jogo da área
-  tempoTotal = difftime(fim, inicio);
-  tempoDeJogoSeg[areaAtual-1] = (int)tempoTotal;
   
   printf("\n\n");
 }
