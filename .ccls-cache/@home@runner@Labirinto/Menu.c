@@ -1,5 +1,6 @@
 #include "Menu.h"
 #include "Auxiliar.h"
+#include "ranking.h"
 
 void menu(char *nomeJogador, int *dificuldade){
   print_logo(1);
@@ -69,17 +70,17 @@ void escolha(int opt, char *nomeJogador, int *dificuldade){
     }
       break;
     case 3:
-      { 
-        int opt;
-        print_ranking();
-        opt = verifica_retorno();
-        if(opt == 1){
-          menu(nomeJogador, dificuldade);
-        } else {
-          encerrar_programa();
-        };
-      } 
-      break;
+    { 
+      int opt;
+      ranking(); // Chamando a função para exibir o ranking
+      opt = verifica_retorno();
+      if(opt == 1){
+        menu(nomeJogador, dificuldade);
+      } else {
+        encerrar_programa();
+      };
+    } 
+    break;
     case 4:
       { 
         int opt;

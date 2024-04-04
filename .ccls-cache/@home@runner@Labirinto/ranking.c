@@ -3,7 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-void bubbleSort(int *pontuacao, char nomes[MAX_JOGADORES][TAMANHO_MAXIMO_NOME],int tamanho) {
+void bubbleSort(int *pontuacao, char nomes[MAX_JOGADORES][TAMANHO_MAXIMO_NOME],
+                int tamanho) {
   int i;
   int trocou;
 

@@ -13,5 +13,6 @@
 #include "Jogador.h"
 #include "Menu.h"
 #include "Auxiliar.h"
+#include "ranking.h"
 
 #endif /* BIBLIOTECAS_H */
