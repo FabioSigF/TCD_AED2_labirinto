@@ -1,4 +1,5 @@
 #include "ranking.h"
+#include "Auxiliar.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -27,32 +28,49 @@ void bubbleSort(int *pontuacao, char nomes[MAX_JOGADORES][TAMANHO_MAXIMO_NOME],
 }
 
 void ranking() {
-  printf("\n ######- Ranking de Jogadores -######\n\n");
-  printf(" NOME - PONTOS \n\n");
+    char texto[100];
+    strcpy(texto, "RANKING");
+    print_title(texto, strlen(texto));
 
-  FILE *pont_arq;
-  pont_arq = fopen("data.txt", "r");
-  if (pont_arq == NULL) {
-    printf("Erro ao abrir o arquivo.\n");
-    return;
-  }
+    printf("┌──────────────────────────────┬────────┐\n");
+    printf("│           NOME               │ PONTOS │\n");
+    printf("├──────────────────────────────┼────────┤\n");
 
-  char nomes[MAX_JOGADORES][TAMANHO_MAXIMO_NOME];
-  int pontuacoes[MAX_JOGADORES];
-  int tamanho = 0;
+    FILE *pont_arq;
+    pont_arq = fopen("data.txt", "r");
+    if (pont_arq == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return;
+    }
 
-  while (fscanf(pont_arq, "%s %d\n", nomes[tamanho], &pontuacoes[tamanho]) !=
-             EOF &&
-         tamanho < MAX_JOGADORES) {
-    tamanho++;
-  }
+    char nomes[MAX_JOGADORES][TAMANHO_MAXIMO_NOME];
+    int pontuacoes[MAX_JOGADORES];
+    int tamanho = 0;
 
-  fclose(pont_arq);
+    while (fscanf(pont_arq, "%s %d\n", nomes[tamanho], &pontuacoes[tamanho]) !=
+               EOF &&
+           tamanho < MAX_JOGADORES) {
+        tamanho++;
+    }
 
-  bubbleSort(pontuacoes, nomes, tamanho);
+    fclose(pont_arq);
 
-  printf("Ranking:\n");
-  for (int i = 0; i < tamanho; i++) {
-    printf("%s %d\n", nomes[i], pontuacoes[i]);
-  }
+    bubbleSort(pontuacoes, nomes, tamanho);
+
+    for (int i = 0; i < tamanho; i++) {
+        printf("│ %-28s │ %-6d │\n", nomes[i], pontuacoes[i]);
+    }
+    printf("└──────────────────────────────┴────────┘\n");
+}
+void inserir_pontuacao(char nome[], int pontos) {
+    FILE *pont_arq;
+    pont_arq = fopen("data.txt", "a");
+    if (pont_arq == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return;
+    }
+
+    fprintf(pont_arq, "%s %d\n", nome, pontos);
+
+    fclose(pont_arq);
 }

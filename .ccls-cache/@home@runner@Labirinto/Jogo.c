@@ -150,7 +150,7 @@ void imprime_mensagem_area(int areaAtual, int ehUltimaArea) {
 }
 
 void imprime_mensagem_derrota(){
-  printf("Você perdeu todos os seus pontos de vida. Esse foi o seu último erro... VOCÊ PERDEU!");
+  printf("Você perdeu todos os seus pontos de vida. Esse foi o seu último erro... VOCÊ PERDEU!\n\n");
   printf("===========================\n         GAME OVER         \n===========================\n\n");
 }
 

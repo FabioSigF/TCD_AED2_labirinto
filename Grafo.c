@@ -50,15 +50,15 @@ void gera_grafo(Grafo *gr) {
   srand(time(NULL));
 
   for (int i = 0; i < gr->nro_vertices; i++) {
-      //número aleatório para definir a quantidade de arestas
+      //numero aleatorio para definir a quantidade de arestas
       int num_arestas = rand() % (gr->nro_vertices) - 1;
-      //precisa ter ao menos 1 aresta por vértice
+      //precisa ter ao menos 1 aresta por vertices
       if(num_arestas <= 0)
         num_arestas = 1;
       while (num_arestas > 0) {
-          //escolhe um vértice aleatório para fazer ligação
+          //escolhe um vÃ©rtice aleatÃ³rio para fazer ligaÃ§Ã£o
           int v = rand() % gr->nro_vertices;
-          //verifica se a aresta já existe
+          //verifica se a aresta jÃ¡ existe
           if (i != v && !aresta_existe(gr, i, v)){
             insereAresta(gr, i, v, 1, 0);
             num_arestas--;
