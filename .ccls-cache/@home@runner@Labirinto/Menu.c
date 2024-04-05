@@ -1,6 +1,7 @@
 #include "Menu.h"
 #include "Auxiliar.h"
 #include "ranking.h"
+#include <unistd.h>
 
 void menu(char *nomeJogador, int *dificuldade) {
   print_logo(1);
@@ -16,13 +17,12 @@ void menu(char *nomeJogador, int *dificuldade) {
   escolha(opt, nomeJogador, dificuldade);
 }
 
-void print_opcoes() {
-  printf("[ 1 ] JOGAR\n");
-  printf("[ 2 ] MANUAL\n");
-  printf("[ 3 ] RANKING\n");
-  printf("[ 4 ] SOBRE\n");
-  printf("[ 5 ] SAIR");
-  printf("\n\n");
+void print_opcoes(){
+    printf("    [ 1 ] JOGAR\n");
+    printf("    [ 2 ] MANUAL\n");
+    printf("    [ 3 ] RANKING\n");
+    printf("    [ 4 ] SOBRE\n");
+    printf("    [ 5 ] SAIR\n\n");
 }
 
 void escolha(int opt, char *nomeJogador, int *dificuldade) {
@@ -100,17 +100,37 @@ void print_manual() {
   print_title(texto, strlen(texto));
 }
 
+void print_with_delay(const char *text) {
+    int len = strlen(text);
+    for (int i = 0; i < len; i++) {
+        putchar(text[i]);
+        fflush(stdout); // Força a saída para que seja exibida imediatamente
+        usleep(10000); // Aguarda 100 milissegundos (0.1 segundo)
+    }
+}
+
 void print_introducao() {
-  char texto[400];
-  strcpy(texto, "Você faz parte de um povo originado de uma área inóspita, "
-                "conhecida como 'O Labirinto'.\n\nSeu objetivo é, assim como o "
-                "de todos do  seu povo, alcançar a maioridade para explorar o "
-                "mundo e presenciar suas várias belezas.\n\nPorém, somente os "
-                "10 melhores e mais rápidos terão seus nomes gravados na "
-                "história como grandes guerreiros.\n\nDê o seu melhor!");
-  print_timer(texto, strlen(texto));
+  printf("\n");
+  printf("=====================================================================================================\n");
+  printf("                                Jornada Épica Contra os Monstros dos Grafos\n");
+  printf("=====================================================================================================\n\n");
+
+  print_with_delay("Era uma vez, em um mundo onde o destino se entrelacava com a bravura e a determinacao, tres alunos se destacavam em meio ao caos e a incerteza. Entre os corredores de uma escola comum, onde sonhos nasciam e esperancas floresciam, surgiram tres nomes destinados a mudar o curso da historia: Andre, o Ultimo Heroi da Terra; Fabio do Zap; e Poderoso Casao.\n\n");
+
+  print_with_delay("Andre, cujo coracao pulsava com a forca de mil sois, era conhecido por sua coragem inabalavel e seu espirito indomavel. Ele carregava consigo o fardo de uma profecia ancestral, que o destinava a ser o ultimo bastiao de esperanca em um mundo a beira do abismo.\n\n");
+
+  print_with_delay("Fabio, um jovem de alma vibrante e mente afiada, dominava os segredos do mundo digital como ninguem. Conhecido como Fabio do Zap, ele navegava pelas correntes da informacao com destreza e perspicacia, buscando desvendar os misterios que assombravam sua realidade.\n\n");
+
+  print_with_delay("Poderoso Casao, por sua vez, era um enigma envolto em misterio. Com sua habilidade unica de encontrar solucoes nos lugares mais inesperados, ele era a chave para desvendar os enigmas que desafiavam ate mesmo os mais sabios.\n\n");
+
+  print_with_delay("Juntos, esses tres jovens embarcariam em uma jornada epica, enfrentando desafios inimaginaveis e descobrindo segredos que mudariam o destino de todos. Com seus conhecimentos em estruturas de dados lendarias, eles se preparavam para combater os terriveis monstros dos grafos, criaturas ancestrais que ameacavam a estabilidade do mundo conhecido.\n\n");
+
+  print_with_delay("A jornada prometia ser ardua e perigosa, mas tambem repleta de aventuras e descobertas. O destino do mundo estava nas maos desses tres jovens herois, e o futuro aguardava ansiosamente pelo desfecho dessa epica batalha entre o bem e o mal.......\n\n");
+      printf("=====================================================================================================\n\n");
+  
   print_transicao();
 }
+
 
 int escolhe_dificuldade() {
 

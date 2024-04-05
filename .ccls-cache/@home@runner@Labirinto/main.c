@@ -40,7 +40,8 @@ int main(void) {
   
   //Jogador explora Mapa
   system("clear");
-  explorar_mapa(mapa, listaPercurso, dificuldade, tempoDeJogoSeg);
+  explorar_mapa(mapa, listaPercurso, dificuldade, tempoDeJogoSeg, nomeJogador);
+  //inserir_pontuacao(nomeJogador, pontuacao);
   int optFim = verifica_retorno();
   
   if(optFim == 1) {

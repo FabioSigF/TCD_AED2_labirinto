@@ -5,9 +5,10 @@
 #include "Jogador.h"
 #include "Jogo.h"
 #include "Auxiliar.h"
+#include "ranking.h"
 
 //Função para percorrer o labirinto.
-void explorar_labirinto(Grafo *g, int listaPercurso[10][10], int dificuldade, int tempoDeJogoSeg[6]) {
+void explorar_labirinto(Grafo *g, int listaPercurso[10][10], int dificuldade, int tempoDeJogoSeg[6], char nomeJogador[15]) {
   // Vértice 0 sempre é o início do labirinto.
   int salaAtual = 0;
   int areaAtual = identifica_area(g, dificuldade);
@@ -82,6 +83,7 @@ void explorar_labirinto(Grafo *g, int listaPercurso[10][10], int dificuldade, in
 
       imprime_mensagem_pontuacao(pontuacao);
       //inserir pontuação no arquiv
+      inserir_pontuacao(nomeJogador, pontuacao);
     } else {
       imprime_mensagem_derrota();
       //Como ele perdeu, não pontua.
@@ -103,13 +105,14 @@ void explorar_labirinto(Grafo *g, int listaPercurso[10][10], int dificuldade, in
   system("clear");
   printf("\n\n");
 }
+
 //Pos ordem
-void explorar_mapa(ArvBin *raiz, int listaPercurso[10][10], int dificuldade, int tempoDeJogoSeg[6]){
+void explorar_mapa(ArvBin *raiz, int listaPercurso[10][10], int dificuldade, int tempoDeJogoSeg[6], char nomeJogador[15]){
   if(raiz == NULL)
       return;
   if(*raiz != NULL){
-      explorar_mapa(&((*raiz)->esq), listaPercurso, dificuldade, tempoDeJogoSeg);
-      explorar_mapa(&((*raiz)->dir), listaPercurso, dificuldade, tempoDeJogoSeg);
-      explorar_labirinto((*raiz)->grafo, listaPercurso, dificuldade, tempoDeJogoSeg);
+      explorar_mapa(&((*raiz)->esq), listaPercurso, dificuldade, tempoDeJogoSeg, nomeJogador);
+      explorar_mapa(&((*raiz)->dir), listaPercurso, dificuldade, tempoDeJogoSeg, nomeJogador);
+      explorar_labirinto((*raiz)->grafo, listaPercurso, dificuldade, tempoDeJogoSeg, nomeJogador);
   }
 }

@@ -12,6 +12,7 @@ void print_introducao (); // Historia do jogo
 void print_sobre (); // Credito aos criadores do programa
 void print_manual (); // Como jogar
 void print_ranking (); // Imprime o ranking dos 10 melhores jogadores com os melhores tempos
+void print_with_delay(const char *text);
 
 void ASCIIart_1();
 void ASCIIart_2();
